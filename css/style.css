@@ -329,6 +329,10 @@ button:hover {
   padding-bottom: 0;
   margin: 35px 15px 0px;
 }
+.activities input:focus {
+  background: rgba(255, 255, 255, 1) !important;
+  border-color:  rgb(9, 73, 250) !important;
+}
 
 .activities-box {
   font-family: 'roboto', sans-serif;
@@ -336,6 +340,7 @@ button:hover {
   border-radius: 3px;
   border: 1px solid transparent;
   transition: all 0.3s ease-out;
+  
 }
 
 .activities legend {
@@ -353,6 +358,10 @@ button:hover {
   border-radius: 3px;
   border: 1px solid rgba(36, 28, 21, 0.2);
   transition: all 0.3s ease-out;
+}
+.activities label.focus{
+  background: rgb(246, 252, 253) !important;
+  border-color:  rgb(9, 73, 250) !important;
 }
 
 .activities label:nth-of-type(1) {

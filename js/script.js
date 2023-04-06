@@ -11,6 +11,12 @@ const cardZip = document.getElementById("zip");
 const cardCvv = document.getElementById("cvv");
 const activities = document.getElementById("activities")
 const activitiesHint = document.getElementById("activities-hint")
+const activitiesCheckboxes = document.querySelectorAll("#activities-box input[type='checkbox']")
+
+
+
+
+
 
 let totalCost = 0;
 nameInput.focus();
@@ -61,7 +67,7 @@ activities.addEventListener('change',(e) => {
 //Loop thru all events that have a specific time.
 //Compare the times, if there is a conflict either set or remove a flag and enable or disable the checkbox.
 //while looping ensure at least one activity is checked for validation      
-        Array.from(document.querySelectorAll("#activities-box input[type='checkbox']")).forEach(element => {
+        Array.from(activitiesCheckboxes).forEach(element => {
             if (e.target.dataset.dayAndTime && element !== e.target && element.dataset.dayAndTime){
                 if (element.dataset.dayAndTime === e.target.dataset.dayAndTime){
                     element.disabled = checked;
@@ -118,7 +124,15 @@ document.getElementById('title').addEventListener('change',(e) => {
         otherJobRole.hidden = true;
     }
 });
-
+//listen for checkboxes to be focused and unfocused. apply a class to highlight/un-highlight each label.
+Array.from(activitiesCheckboxes).forEach(element => {
+    element.addEventListener('focus',(e)=>{
+        e.target.parentNode.classList.add('focus');
+    })
+    element.addEventListener('blur',(e)=>{
+        e.target.parentNode.classList.remove('focus');
+    })
+})
 //event listener to validate in real time.
 //modified from the course "Regular Expressions in JS: Validating a Username"
 //modifications set error message based on the case, and set valid/not-valid class.
