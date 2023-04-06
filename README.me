@@ -1,0 +1,40 @@
+# Project 3 interactive form
+ Form fields with Real time Validation:
+    Name field checks for /^[a-z ]+$/i
+        (any string of letters and spaces) not the most robust Regex, but for demonstrative purposes it will work.
+            Sets its parent node to .not-valid/.valid and displays/hides its next sibling to display an error.
+            This error is either warning that the field is blank or that it has non letters in it.
+    
+    Email field checks for /^[^@]+@[^@.]+\.[\w]+$/ 
+        (any characters except @ followed by an @ with more characters except @ and . followed by a . and any letters or numbers)
+        got this from the lesson on validation
+            Sets its parent node to .not-valid/.valid and displays/hides its next sibling to display an error.
+            This error is either warning that the field is blank or that it is not a formatted email.
+    
+    Fieldset of activities. When ever one is clicked, it loops thru the check inputs to ensure at least one activity is checked.
+            Sets its self to either .not-valid/.valid and displays/hides its hint element to display an error.
+            This error tells the user to select at least 1 event
+    
+    credit card number field checks for /^[0-9]{13,16}$/
+        (any string of numbers 13-16 characters long)
+            Sets its parent node to .not-valid/.valid and displays/hides its next sibling to display an error. 
+            This error tells the user to enter a string of numbers of proper length
+    
+    credit card zip field checks for /^[0-9]{5}$/
+        (any string of numbers 5 characters long)
+            Sets its parent node to .not-valid/.valid and displays/hides its next sibling to display an error. 
+            This error tells the user to enter a string of numbers of proper length
+    
+    credit card zip field checks for /^[0-9]{3}$/
+        (any string of numbers 3 characters long)
+            Sets its parent node to .not-valid/.valid and displays/hides its next sibling to display an error. 
+            This error tells the user to enter a string of numbers of proper length                   
+    
+    credit card expiration month. when this is changed it makes sure it has a selection.
+            Sets its parent node to .valid
+    
+    credit card expiration year.  when this is changed it makes sure it has a selection.
+            Sets its parent node to .valid
+
+All of these classes are what is checked when the submit button is pressed.
+    When a field is missing the valid class it is set to not-valid and the hint is shown.

@@ -1,0 +1,15 @@
+It works, to my eyes it meets all requirements for exceeds expectation. However... feels clunky...
+Especially lines 179 down.
+I'm checking validation while also throwing flags up. 
+Other than just a long list of 
+if(!email.parentNode.classList.includes('valid')){
+email.parentNode.classList.add('not-valid');
+email.nextElementSibling.style.display = 'inherit';
+e.preventDefault();
+}
+7 times... 
+which maybe feels worse?
+Struggling to find the balance between don't repeat stuff and also having each function do 1 thing... 
+Sleep on it? 
+send it to slack? 
+for sure not the only issues, the whole thing feels like a caveman brute forcing it...
