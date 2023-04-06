@@ -1,8 +1,5 @@
-const form = document.querySelector("form");
 const otherJobRole = document.getElementById('other-job-role');
 const tShirtColor = document.getElementById('color');
-const totalCostElement = document.getElementById('activities-cost');
-const eventChecks = document.querySelectorAll("#activities-box input[type='checkbox']")
 const paymentSelect = document.getElementById('payment');
 const payElements = document.querySelectorAll(".payment-methods > div");
 const nameInput = document.getElementById("name");
@@ -15,11 +12,11 @@ const cardCvv = document.getElementById("cvv");
 const activities = document.getElementById("activities")
 const activitiesHint = document.getElementById("activities-hint")
 
-let total = 0;
+let totalCost = 0;
 nameInput.focus();
 
 //validations
-//for textfields this is the regex, for the c/c date dropdowns ensure it has a selection, and set the class valid
+//for text fields this is the regex, for the c/c date dropdowns ensure it has a selection, and set the class valid
 function isValidName(name) {
     return /^[a-z ]+$/i.test(name);
 }
@@ -56,15 +53,15 @@ activities.addEventListener('change',(e) => {
     let checked = e.target.checked;
     let eventIsChecked = false;
     if (checked){
-        total+=parseInt(e.target.dataset.cost)
+        totalCost+=parseInt(e.target.dataset.cost)
     }else{
-        total-=parseInt(e.target.dataset.cost)
+        totalCost-=parseInt(e.target.dataset.cost)
     }
-    totalCostElement.textContent = `Total: $${total}`;
+    document.getElementById('activities-cost').textContent = `Total: $${totalCost}`;
 //Loop thru all events that have a specific time.
 //Compare the times, if there is a conflict either set or remove a flag and enable or disable the checkbox.
 //while looping ensure at least one activity is checked for validation      
-        Array.from(eventChecks).forEach(element => {
+        Array.from(document.querySelectorAll("#activities-box input[type='checkbox']")).forEach(element => {
             if (e.target.dataset.dayAndTime && element !== e.target && element.dataset.dayAndTime){
                 if (element.dataset.dayAndTime === e.target.dataset.dayAndTime){
                     element.disabled = checked;
@@ -189,7 +186,7 @@ function parentValid(element){
 //Check name and email. Then if credit card is selected, check all the c/c fields. 
 //Finally check the fieldset for the activities.
 //If any of these fail, display errors, display tooltips as to why they failed, and prevent the submit, 
-form.addEventListener('submit',(e)=>{
+document.querySelector("form").addEventListener('submit',(e)=>{
     if(!(parentValid(emailInput)&parentValid(nameInput))){e.preventDefault()}
     if (paymentSelect.selectedIndex === 1&&
         (!(parentValid(cardCvv)&
